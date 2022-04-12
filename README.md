@@ -134,3 +134,10 @@ tensorboard --logdir output/log/DataBaker --bind_all
 - 对齐所用声学模型：同1
 - 音素集合：同1
 最新版本的mfa已经不包含sp，所以此版本与1的唯一区别在于预处理时，把textgrid里的""替换为sp,以获得sp的正确标注来对sp建模
+
+###### DataBaker3:
+- 标注：*.lab使用标贝自带标注
+- 辞典：lexicon/mandarin_pinyin.dict(mfa官方辞典,2003个拼音)
+```
+mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/DataBaker-origin-labeling/  lexicon/db-origin_mandarin_pinyin.dict -j 20 --clean --overwrite
+```
