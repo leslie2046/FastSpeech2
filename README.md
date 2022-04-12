@@ -111,7 +111,7 @@ python3 synthesize.py --source preprocessed_data/DataBaker/val.txt --restore_ste
 ```
 tensorboard --logdir output/log/DataBaker --bind_all
 ```
-###学习笔记
+### 学习笔记
 ---
 ###### DataBaker-origin-labeling: 
 - 标注：*.lab使用标贝自带标注
@@ -123,7 +123,7 @@ tensorboard --logdir output/log/DataBaker --bind_all
 ###### DataBaker1:
 - 标注：*.lab使用pypinyin自动汉字转拼音,清除了标点符号
 - 辞典：用上面的拼音标注使用mfa g2p得到的辞典，由于未覆盖所有拼音，合并了lexicon/mandarin_pinyin.dict
-      得到lexicon/db_mandarin_pinyin.dict，2014个拼音
+      得到lexicon/db_mandarin_pinyin.dict，2010个拼音
 - 对齐所用声学模型：mfa train训练标贝语料，使用以上标注和辞典得到的声学模型。
 - 音素集合：lexicon/db_mandarin_pinyin_phones.txt(本辞典统计而出)，比lexicon/mandarin_pinyin_phones.txt多
           5个音素(ei5 iu1 iu2 iu3 iu4),共计135个音素,训练或者合成时需要检查text/pinyin.py里是否一致
