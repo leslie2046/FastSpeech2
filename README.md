@@ -56,7 +56,8 @@ mfa训练一个用于音素对齐的声学模型
 
 
 mfa train raw_data/testmandarin/  lexicon/db_mandarin_pinyin.dict ./textgrid/ -o ./aligner_models/ --overwrite -j 20 --clean --output_format long_textgrid
-
+```
+```
 mfa train raw_data/DataBaker lexicon/db_mandarin_pinyin.dict ./textgrid/DataBaker -o ./aligner_models/ --overwrite -j 20 --clean --output_format long_textgrid
 ```
 
@@ -71,6 +72,8 @@ MFA2.0版本的模型以后使用的是IPA音素集，若使用的是CMU dict或
 
 ```
 mfa models download acoustic english_mfa
+```
+```
 mfa models download dictionary english_mfa
 ```
 
@@ -78,6 +81,8 @@ mfa models download dictionary english_mfa
 
 ```
 mfa models download acoustic mandarin_mfa
+```
+```
 mfa model download dictionary mandarin_mfa
 ```
 
@@ -89,7 +94,8 @@ mfa align corpus_directory dictionary_path acoustic_model_path output_directory 
 ```
 
 mfa align raw_data/test english_mfa english_mfa ./textgrid --overwrite --clean --output_format long_textgrid
-
+```
+```
 mfa align raw_data/testmandarin/ ./lexicon/db_mandarin_pinyin.dict ./aligner_models/db_mandarin_pinyin.zip textgrid/testmandarin --overwrite -j 20 --clean --output_format long_textgrid
 ```
 
@@ -100,9 +106,6 @@ mfa align raw_data/testmandarin/ ./lexicon/db_mandarin_pinyin.dict ./aligner_mod
 python3 preprocess.py config/DataBaker/preprocess.yaml
 ```
 
-
----
-
 ### 训练
 ---
 ###### 训练fastspeech2模型
@@ -110,7 +113,7 @@ python3 preprocess.py config/DataBaker/preprocess.yaml
 python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml --restore_step 111000
 ```
 - restore-step：继续训练的模型
----
+
 ### 合成
 ---
 
@@ -124,8 +127,9 @@ python3 synthesize.py --text "大家好" --speaker_id 0 --restore_step 200000 --
 python3 synthesize.py --source preprocessed_data/DataBaker/val.txt --restore_step 200000 --mode batch -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml
 ```
 
----
-### tensorboard
 
+### tensorboard
+---
 ```
 tensorboard --logdir output/log/DataBaker --bind_all
+```
