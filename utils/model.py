@@ -63,6 +63,8 @@ def get_vocoder(config, device):
             ckpt = torch.load("hifigan/generator_LJSpeech.pth.tar")
         elif speaker == "universal":
             ckpt = torch.load("hifigan/generator_universal.pth.tar")
+        elif speaker == "DataBaker":
+            ckpt = torch.load("hifigan/generator_universal.pth.tar")
         vocoder.load_state_dict(ckpt["generator"])
         vocoder.eval()
         vocoder.remove_weight_norm()

@@ -17,8 +17,10 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 import re
 from unidecode import unidecode
 from .numbers import normalize_numbers
+from text import symbols
+_punctuation = "!'(),.:;? ！‘（），。：；？"
 _whitespace_re = re.compile(r'\s+')
-
+_punctuation_re = re.compile(_punctuation)
 # List of (regular expression, replacement) pairs for abbreviations:
 _abbreviations = [(re.compile('\\b%s\\.' % x[0], re.IGNORECASE), x[1]) for x in [
     ('mrs', 'misess'),
@@ -59,6 +61,15 @@ def lowercase(text):
 def collapse_whitespace(text):
     return re.sub(_whitespace_re, ' ', text)
 
+def collapse_punctuation(text):
+    return re.sub('[^0-9A-Za-z\u4e00-\u9fa5]', '', text)
+
+def remove_prosodylabelings(text):
+    text=re.sub('#1','',text)
+    text=re.sub('#2','',text)
+    text=re.sub('#3','',text)
+    text=re.sub('#4','',text)
+    return collapse_punctuation(text)
 
 def convert_to_ascii(text):
     return unidecode(text)

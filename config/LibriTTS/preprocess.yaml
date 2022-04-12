@@ -1,7 +1,7 @@
 dataset: "LibriTTS"
 
 path:
-  corpus_path: "/home/ming/Data/LibriTTS/train-clean-360"
+  corpus_path: "/home/njue/software/code/FastSpeech2/datasets/LibriTTS/train-clean-360"
   lexicon_path: "lexicon/librispeech-lexicon.txt"
   raw_path: "./raw_data/LibriTTS"
   preprocessed_path: "./preprocessed_data/LibriTTS"

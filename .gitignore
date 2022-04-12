@@ -116,3 +116,11 @@ output/
 *.npy
 TextGrid/
 hifigan/*.pth.tar
+nohup.out
+pretrained
+preprocessed_data.bak/
+preprocessed_data/
+datasets
+aligner_models
+textgrid
+g2p

@@ -1,7 +1,7 @@
 dataset: "AISHELL3"
 
 path:
-  corpus_path: "/home/ming/Data/AISHELL-3"
+  corpus_path: "/home/njue/software/code/FastSpeech2/datasets/AISHELL3"
   lexicon_path: "lexicon/pinyin-lexicon-r.txt"
   raw_path: "./raw_data/AISHELL3"
   preprocessed_path: "./preprocessed_data/AISHELL3"

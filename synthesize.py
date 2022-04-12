@@ -74,6 +74,7 @@ def preprocess_mandarin(text, preprocess_config):
 
     phones = "{" + " ".join(phones) + "}"
     print("Raw Text Sequence: {}".format(text))
+    print("Pinyin Sequence: {}".format(pinyins))
     print("Phoneme Sequence: {}".format(phones))
     sequence = np.array(
         text_to_sequence(
