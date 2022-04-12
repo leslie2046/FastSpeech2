@@ -107,7 +107,7 @@ def expand(values, durations):
 
 
 def synth_one_sample(targets, predictions, vocoder, model_config, preprocess_config):
-
+    
     basename = targets[0][0]
     src_len = predictions[8][0].item()
     mel_len = predictions[9][0].item()
@@ -162,7 +162,7 @@ def synth_one_sample(targets, predictions, vocoder, model_config, preprocess_con
 
 
 def synth_samples(targets, predictions, vocoder, model_config, preprocess_config, path):
-
+    
     basenames = targets[0]
     for i in range(len(predictions[0])):
         basename = basenames[i]
@@ -194,7 +194,7 @@ def synth_samples(targets, predictions, vocoder, model_config, preprocess_config
             stats,
             ["Synthetized Spectrogram"],
         )
-        plt.savefig(os.path.join(path, "{}.png".format(basename)))
+        plt.savefig(os.path.join(path, "{}.png".format(basename[:20])))
         plt.close()
 
     from .model import vocoder_infer
@@ -207,7 +207,7 @@ def synth_samples(targets, predictions, vocoder, model_config, preprocess_config
 
     sampling_rate = preprocess_config["preprocessing"]["audio"]["sampling_rate"]
     for wav, basename in zip(wav_predictions, basenames):
-        wavfile.write(os.path.join(path, "{}.wav".format(basename)), sampling_rate, wav)
+        wavfile.write(os.path.join(path, "{}.wav".format(basename[:20])), sampling_rate, wav)
 
 
 def plot_mel(data, stats, titles):
