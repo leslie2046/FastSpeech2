@@ -160,7 +160,8 @@ class Preprocessor:
         )
 
         # Get alignments
-        textgrid = tgt.io.read_textgrid(tg_path)
+        #textgrid = tgt.io.read_textgrid(tg_path)
+        textgrid = tgt.io.read_textgrid(tg_path,include_empty_intervals=True)
         phone, duration, start, end = self.get_alignment(
             textgrid.get_tier_by_name("phones")
         )
@@ -169,7 +170,7 @@ class Preprocessor:
             return None
 
         # Read and trim wav files
-        wav, _ = librosa.load(wav_path)
+        wav, _ = librosa.load(wav_path,sr=self.sampling_rate)
         wav = wav[
             int(self.sampling_rate * start) : int(self.sampling_rate * end)
         ].astype(np.float32)
@@ -251,7 +252,7 @@ class Preprocessor:
         )
 
     def get_alignment(self, tier):
-        sil_phones = ["sil", "sp", "spn"]
+        sil_phones = ["sil", "sp", "spn",""]
 
         phones = []
         durations = []
@@ -274,8 +275,8 @@ class Preprocessor:
                 end_time = e
                 end_idx = len(phones)
             else:
-                # For silent phones
-                phones.append(p)
+                # For silent phones (assuming no "spn" == <unk>)
+                phones.append("sp")
 
             durations.append(
                 int(
