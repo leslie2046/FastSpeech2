@@ -111,7 +111,7 @@ python3 synthesize.py --source preprocessed_data/DataBaker/val.txt --restore_ste
 ```
 tensorboard --logdir output/log/DataBaker --bind_all
 ```
-###学习笔记
+### 学习笔记
 ---
 ###### DataBaker-origin-labeling: 
 - 标注：*.lab使用标贝自带标注
