@@ -98,7 +98,7 @@ python3 preprocess.py config/DataBaker/preprocess.yaml
 ---
 ###### 训练fastspeech2模型
 ```
-nohuo python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+nohup python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
       --restore_step 111000 &
 ```
 - restore-step：继续训练的模型
