@@ -98,8 +98,8 @@ python3 preprocess.py config/DataBaker/preprocess.yaml
 ---
 ###### 训练fastspeech2模型
 ```
-python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
-      --restore_step 111000
+nohuo python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --restore_step 111000 &
 ```
 - restore-step：继续训练的模型
 
@@ -123,6 +123,42 @@ python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海�
       --mode single  \
       -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
       --pitch_control 0.5
+```
+- 语速控制
+duration_control数值越大越慢，越小越快
+```
+python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。"  \
+      --speaker_id 0 \
+      --restore_step 380000 \
+      --mode single  \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --duration_control 2.0
+```
+```
+python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。"  \
+      --speaker_id 0 \
+      --restore_step 380000 \
+      --mode single  \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --duration_control 0.5
+```
+- 音量控制
+energy_control数值越大音量越高，越小音量越低
+```
+python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。"  \
+      --speaker_id 0 \
+      --restore_step 380000 \
+      --mode single  \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --energy_control 2.0
+```
+```
+python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。"  \
+      --speaker_id 0 \
+      --restore_step 380000 \
+      --mode single  \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --energy_control 0.5
 ```
 
 - 批量合成
