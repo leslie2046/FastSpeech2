@@ -64,7 +64,7 @@ class Preprocessor:
 
         # Compute pitch, energy, duration, and mel-spectrogram
         speakers = {}
-        for i, speaker in enumerate(tqdm(os.listdir(self.in_dir))):
+        for i, speaker in enumerate(tqdm(os.listdir(self.in_dir), desc="Speakers", position=1)):
             speakers[speaker] = i
             for wav_name in os.listdir(os.path.join(self.in_dir, speaker)):
                 if ".wav" not in wav_name:
@@ -160,7 +160,6 @@ class Preprocessor:
         )
 
         # Get alignments
-        #textgrid = tgt.io.read_textgrid(tg_path)
         textgrid = tgt.io.read_textgrid(tg_path,include_empty_intervals=True)
         phone, duration, start, end = self.get_alignment(
             textgrid.get_tier_by_name("phones")
