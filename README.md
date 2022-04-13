@@ -33,15 +33,16 @@ mfa训练一个用于音素对齐的声学模型
 ```
 
 
-mfa train raw_data/testmandarin/  lexicon/db_mandarin_pinyin.dict ./textgrid/ -o ./aligner_models/ --overwrite -j 20 --clean --output_format long_textgrid
+mfa train raw_data/testmandarin/  lexicon/db_mandarin_pinyin.dict ./textgrid/ -o ./aligner_models/ \
+      --overwrite -j 20 --clean --output_format long_textgrid
 ```
 ```
-mfa train raw_data/DataBaker lexicon/db_mandarin_pinyin.dict ./textgrid/DataBaker -o ./aligner_models/ --overwrite -j 20 --clean --output_format long_textgrid
+mfa train raw_data/DataBaker lexicon/db_mandarin_pinyin.dict ./textgrid/DataBaker -o ./aligner_models/ --overwrite \
+      -j 20 --clean --output_format long_textgrid
 ```
 
 ###### MFA下载
-https://github.com/MontrealCorpusTools/mfa-models
-MFA2.0版本的模型以后使用的是IPA音素集，若使用的是CMU dict或者汉语拼音音素集可以自行到以上链接去下载1.0版本的模型和字典。
+[MFA](https://github.com/MontrealCorpusTools/mfa-models)2.0版本的模型以后使用的是IPA音素集，若使用的是CMU dict或者汉语拼音音素集可以自行到以上链接去下载1.0版本的模型和字典。
 [声学模型下载地址](https://github.com/MontrealCorpusTools/mfa-models/tree/main/acoustic)
 [辞典下载地址](https://github.com/MontrealCorpusTools/mfa-models/tree/main/dictionary)
 
@@ -71,14 +72,19 @@ mfa model download dictionary mandarin_mfa
 mfa align corpus_directory dictionary_path acoustic_model_path output_directory --clean
 ```
 
-mfa align raw_data/test english_mfa english_mfa ./textgrid --overwrite --clean --output_format long_textgrid
+mfa align raw_data/test \
+      english_mfa \
+      english_mfa \
+      ./textgrid \
+      --overwrite --clean --output_format long_textgrid
 ```
 ```
 mfa align raw_data/testmandarin/ \
-./lexicon/db_mandarin_pinyin.dict \
-./aligner_models/db_mandarin_pinyin.zip \
-textgrid/testmandarin \
---overwrite -j 20 --clean --output_format long_textgrid
+      ./lexicon/db_mandarin_pinyin.dict \
+      ./aligner_models/db_mandarin_pinyin.zip \
+      textgrid/testmandarin \
+      --overwrite -j 20 --clean \
+      --output_format long_textgrid
 ```
 
 ###### 预处理
@@ -92,7 +98,8 @@ python3 preprocess.py config/DataBaker/preprocess.yaml
 ---
 ###### 训练fastspeech2模型
 ```
-python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml --restore_step 111000
+python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --restore_step 111000
 ```
 - restore-step：继续训练的模型
 
@@ -101,12 +108,29 @@ python3 train.py -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.y
 
 - 单句合成
 ```
-python3 synthesize.py --text "大家好" --speaker_id 0 --restore_step 200000 --mode single -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml
+python3 synthesize.py --text "大家好" \
+      --speaker_id 0 \
+      --restore_step 200000 \
+      --mode single \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml
+```
+- 控制音调 
+pitch_control数值越大音调越高
+```
+python3 synthesize.py --text "君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。"  \
+      --speaker_id 0 \
+      --restore_step 380000 \
+      --mode single  \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml \
+      --pitch_control 0.5
 ```
 
 - 批量合成
 ```
-python3 synthesize.py --source preprocessed_data/DataBaker/val.txt --restore_step 200000 --mode batch -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml
+python3 synthesize.py --source preprocessed_data/DataBaker/val.txt \
+      --restore_step 200000 \
+      --mode batch \
+      -p config/DataBaker/preprocess.yaml -m config/DataBaker/model.yaml -t config/DataBaker/train.yaml
 ```
 
 
