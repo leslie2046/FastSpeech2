@@ -74,7 +74,11 @@ mfa align corpus_directory dictionary_path acoustic_model_path output_directory 
 mfa align raw_data/test english_mfa english_mfa ./textgrid --overwrite --clean --output_format long_textgrid
 ```
 ```
-mfa align raw_data/testmandarin/ ./lexicon/db_mandarin_pinyin.dict ./aligner_models/db_mandarin_pinyin.zip textgrid/testmandarin --overwrite -j 20 --clean --output_format long_textgrid
+mfa align raw_data/testmandarin/ \
+./lexicon/db_mandarin_pinyin.dict \
+./aligner_models/db_mandarin_pinyin.zip \
+textgrid/testmandarin \
+--overwrite -j 20 --clean --output_format long_textgrid
 ```
 
 ###### 预处理
