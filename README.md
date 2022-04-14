@@ -211,7 +211,7 @@ tensorboard --logdir output/log/DataBaker --bind_all
 - 音素集合：同1
 最新版本的mfa已经不包含sp，所以此版本与1的唯一区别在于预处理时，把textgrid里的""替换为sp,以获得sp的正确标注来对sp建模
 
-####### njueai2021:
+###### njueai2021:
 
 njueai客服2021年语料，过滤掉时长过小和过大的，保留2~10秒的。
 ```
