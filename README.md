@@ -239,6 +239,9 @@ cat eng.list |xargs -n1 -I{}  rm {}
 ```
 cat eng.list |xargs -n1 -I{}  mv {} wav_eng
 ```
+```
+mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021/ lexicon/njueai_mandarin_pinyin.dict
+```
 
 - 标注
 
