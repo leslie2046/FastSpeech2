@@ -239,9 +239,13 @@ cat eng.list |xargs -n1 -I{}  rm {}
 ```
 cat eng.list |xargs -n1 -I{}  mv {} wav_eng
 ```
+获取辞典，发现是db_mandarin_pinyin.dict的子集，因此继续使用db_mandarin_pinyin.dict
 ```
 mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021/ lexicon/njueai_mandarin_pinyin.dict
 ```
-
+```
+mfa train raw_data/njueai2021 lexicon/db_mandarin_pinyin.dict ./textgrid/njueai -o njueai2021_aligner --overwrite \
+>       -j 20 --clean --output_format long_textgrid
+```
 - 标注
 
