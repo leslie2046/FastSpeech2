@@ -220,5 +220,14 @@ find /mnt/share/ai/data_files/voice/liuyunchen/2021*/ -type f -name liuyunchen*.
 ```
 find /mnt/share/ai/data_files/voice/2021*/*/liuyunchen  -type f -name liuyunchen*.wav  -size +62k -size -320k|xargs  -n1 -I{} cp -n {}  /mnt/share/ai/njueai2021/liuyunchen/
 ```
+用讯飞的ASR进行自动转写
+```
+./xunfei_decode.sh /home/njue/software/code/FastSpeech2/datasets/njueai2021/liuyunchen/ 7
+```
+
+删除空的标注文件
+```
+find . -name "*.trn" -type f -size 0c   |xargs -n1 -I{}  rm {}
+```
 - 标注
 
