@@ -231,7 +231,11 @@ find . -name "*.trn" -type f -size 0c   |xargs -n1 -I{}  rm {}
 ```
 过滤掉包含英文字母的语料
 ```
-grep -r [a-zA-Z] *.trn|wc -l
+grep -r [a-zA-Z] *.trn |awk -F ':' '{print $1'} > eng.list
+```
+cat eng.list |xargs -n1 -I{}  rm {}
+```
+cat eng.list |xargs -n1 -I{}  mv {} wav_eng
 ```
 
 - 标注
