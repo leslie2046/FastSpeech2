@@ -47,3 +47,8 @@ grep -r [a-zA-Z] *.trn |awk -F ':' '{print $1'} > eng.list
 ```
 cat eng.list |xargs -n1 -I{}  rm {}
 ```
+```
+python3 prepare_align.py config/njueai2021/preprocess.yaml
+```
+```
+```
