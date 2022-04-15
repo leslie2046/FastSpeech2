@@ -51,5 +51,5 @@ cat eng.list |xargs -n1 -I{}  rm {}
 python3 prepare_align.py config/njueai2021/preprocess.yaml
 ```
 ```
-mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021 lexicon/njueai2021_mandarin_pinyin.dict  -clean -v --overwrite
+mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021 lexicon/njueai2021_mandarin_pinyin.dict  -clean -v --overwrite -j 28
 ```
