@@ -233,7 +233,9 @@ find . -name "*.trn" -type f -size 0c   |xargs -n1 -I{}  rm {}
 ```
 grep -r [a-zA-Z] *.trn |awk -F ':' '{print $1'} > eng.list
 ```
+```
 cat eng.list |xargs -n1 -I{}  rm {}
+```
 ```
 cat eng.list |xargs -n1 -I{}  mv {} wav_eng
 ```
