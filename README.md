@@ -187,3 +187,4 @@ python3 synthesize.py --source preprocessed_data/DataBaker/val.txt \
 ```
 tensorboard --logdir output/log/DataBaker --bind_all
 ```
+[训练记录](https://github.com/leslie2046/FastSpeech2/blob/master/RECORD.md)
