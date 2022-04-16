@@ -64,6 +64,6 @@ mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021 lexicon/njueai20
 g2p得到的词典，为db_mandarin_pinyin.dict的子集，所以没有增加新的词，可以直接沿用db_mandarin_pinyin.dict
 
 ```
-mfa train raw_data/njueai2021/ lexicon/db_mandarin_pinyin.dict ./textgrid/njueai2021/ -o ./aligner_models/njueai2021-2 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid
+mfa train raw_data/njueai2021/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/njueai2021/ -o njueai2021 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid 
 ```
-训练声学模型时带上了phone_set为PINYIN，并设置为30线程并行
+训练声学模型时带上了phone_set为PINYIN，并设置为30线程并行,修改了preprocessor.yaml max_wav_value 32768->32767
