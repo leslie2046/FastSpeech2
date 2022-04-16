@@ -53,3 +53,6 @@ python3 prepare_align.py config/njueai2021/preprocess.yaml
 ```
 mfa g2p ./g2p/mandarin_pinyin_g2p_2.0.zip ./raw_data/njueai2021 lexicon/njueai2021_mandarin_pinyin.dict  -clean -v --overwrite -j 28
 ```
+```
+mfa train raw_data/njueai2021/ lexicon/db_mandarin_pinyin.dict ./textgrid/njueai2021/ -o njueai2021 --overwrite -j 20 --clean --output_format long_textgrid
+```
