@@ -27,7 +27,9 @@
 ###### DataBaker3:
 - 修改preprocess.yaml max_wav_value 32768->32767,并修改为16K，其他与DataBaker2相同
 - nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/DataBaker/ -o DataBaker --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_db.log 2>&1 &
-
+```
+python3 preprocess.py config/DataBaker/preprocess.yaml
+```
 
 ###### njueai2021:
 - 发音人 liuyunchen:42283句
@@ -73,6 +75,4 @@ g2p得到的词典，为db_mandarin_pinyin.dict的子集，所以没有增加新
 nohup mfa train raw_data/njueai2021/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/njueai2021/ -o njueai2021 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_njueai.log 2>&1 &	    
 ```
 训练声学模型时带上了phone_set为PINYIN，并设置为30线程并行
-```
-python3 preprocess.py config/DataBaker/preprocess.yaml
-```
+
