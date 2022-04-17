@@ -1,6 +1,6 @@
 ### 学习笔记
 ---
-###### DataBaker-origin-labeling: 
+###### DataBaker0: 
 - 标注：*.lab使用标贝自带标注
 - 辞典：lexicon/mandarin_pinyin.dict(mfa官方辞典,2003个拼音)
 - 音素集：lexicon/phones/mandarin_pinyin_phones.txt(mfa官方辞典统计而出),共计130个音素,训练或者合成时需要检查text/pinyin.py里是否一致
@@ -24,11 +24,12 @@
 - 音素集合：同1
 最新版本的mfa已经不包含sp，所以此版本与1的唯一区别在于预处理时，把textgrid里的""替换为sp,以获得sp的正确标注来对sp建模
 
-###### DataBaker3:
+###### DataBaker3(16k):
 - 修改preprocess.yaml max_wav_value 32768->32767,并修改为16K，其他与DataBaker2相同
-- nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/DataBaker/ -o DataBaker --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_db.log 2>&1 &
-```
-python3 preprocess.py config/DataBaker/preprocess.yaml
+
+###### DataBaker(22k):
+- 修改preprocess.yaml max_wav_value 32768->32767  其他与DataBaker2相同
+nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/DataBaker/ -o DataBaker --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_db.log 2>&1 &
 ```
 
 ###### njueai2021:
