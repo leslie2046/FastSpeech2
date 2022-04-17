@@ -72,4 +72,7 @@ g2p得到的词典，为db_mandarin_pinyin.dict的子集，所以没有增加新
 ```
 nohup mfa train raw_data/njueai2021/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/njueai2021/ -o njueai2021 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_njueai.log 2>&1 &	    
 ```
-训练声学模型时带上了phone_set为PINYIN，并设置为30线程并行,
+训练声学模型时带上了phone_set为PINYIN，并设置为30线程并行
+```
+python3 preprocess.py config/DataBaker/preprocess.yaml
+```
