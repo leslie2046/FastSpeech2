@@ -1,7 +1,7 @@
 ### 学习笔记
 ---
 ###### DataBaker0: 
-- 标注：*.lab使用标贝自带标注
+- 标注：*.lab使用标贝自带得拼音标注
 - 辞典：lexicon/mandarin_pinyin.dict(mfa官方辞典,2003个拼音)
 - 音素集：lexicon/phones/mandarin_pinyin_phones.txt(mfa官方辞典统计而出),共计130个音素,训练或者合成时需要检查text/pinyin.py里是否一致
 - mfa声学模型：./aligner_models/mandarin.zip（mfa官方预训练的模型）
