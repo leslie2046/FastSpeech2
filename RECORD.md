@@ -25,12 +25,21 @@
 最新版本的mfa已经不包含sp，所以此版本与1的唯一区别在于预处理时，把textgrid里的""替换为sp,以获得sp的正确标注来对sp建模
 
 ###### DataBaker3(16k):
+失败
 - 修改preprocess.yaml max_wav_value 32768->32767,并修改为16K，其他与DataBaker2相同
 
 ###### DataBaker(22k):
 - 修改preprocess.yaml max_wav_value 32768->32767  其他与DataBaker2相同
 nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/DataBaker/ -o DataBaker --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_db.log 2>&1 &
 ```
+###### DataBaker5(22k):
+因为发现其实语料中是大量儿化音的语句，所以最适合使用儿化音辞典
+- 标注：使用标贝自带拼音标注（儿化音）
+- 辞典:  pinyin-lexicon-r.txt（4120个拼音）
+- 音素集合：pinyin-lexicon-r.txt转化而来209个音素
+- mfa声学模型：DataBaker5
+ nohup mfa train raw_data/DataBaker5/ lexicon/pinyin-lexicon-r.txt   ./preprocessed_data/DataBaker5/ -o DataBaker5 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_njueai.log 2>&1 &	
+	  
 
 ###### njueai2021:
 - 发音人 liuyunchen:42283句
