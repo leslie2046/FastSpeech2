@@ -30,6 +30,7 @@
 
 ###### DataBaker(22k):
 - 修改preprocess.yaml max_wav_value 32768->32767  其他与DataBaker2相同
+```
 nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocessed_data/DataBaker/ -o DataBaker --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_db.log 2>&1 &
 ```
 ###### DataBaker5(22k):
@@ -38,8 +39,9 @@ nohup mfa train raw_data/DataBaker/ lexicon/db_mandarin_pinyin.dict ./preprocess
 - 辞典:  pinyin-lexicon-r.txt（4120个拼音）
 - 音素集合：pinyin-lexicon-r.txt转化而来209个音素
 - mfa声学模型：DataBaker5
+- ```
  nohup mfa train raw_data/DataBaker5/ lexicon/pinyin-lexicon-r.txt   ./preprocessed_data/DataBaker5/ -o DataBaker5 --phone_set PINYIN  --overwrite -j 30 --clean  -v --output_format long_textgrid >> nohup_njueai.log 2>&1 &	
-	  
+```
 
 ###### njueai2021:
 - 发音人 liuyunchen:42283句
