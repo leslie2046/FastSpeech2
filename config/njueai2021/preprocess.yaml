@@ -1,10 +1,10 @@
-dataset: "AISHELL3"
+dataset: "njueai2021"
 
 path:
-  corpus_path: "/home/njue/software/code/FastSpeech2/datasets/AISHELL3"
-  lexicon_path: "lexicon/pinyin-lexicon-r.txt"
-  raw_path: "./raw_data/AISHELL3"
-  preprocessed_path: "./preprocessed_data/AISHELL3"
+  corpus_path: "/home/njue/software/code/FastSpeech2/datasets/njueai2021"
+  lexicon_path: "lexicon/db_mandarin_pinyin.dict"
+  raw_path: "./raw_data/njueai2021"
+  preprocessed_path: "./preprocessed_data/njueai2021"
 
 preprocessing:
   val_size: 512
@@ -12,10 +12,10 @@ preprocessing:
     text_cleaners: []
     language: "zh"
   audio:
-    sampling_rate: 22050
+    sampling_rate: 22050 
     max_wav_value: 32767.0
   stft:
-    filter_length: 1024
+    filter_length: 1024 
     hop_length: 256
     win_length: 1024
   mel:

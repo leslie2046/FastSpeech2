@@ -251,7 +251,7 @@ class Preprocessor:
         )
 
     def get_alignment(self, tier):
-        sil_phones = ["sil", "sp", "spn",""]
+        sil_phones = ["sil", "sp", "spn","sp1",""]
 
         phones = []
         durations = []
@@ -260,7 +260,6 @@ class Preprocessor:
         end_idx = 0
         for t in tier._objects:
             s, e, p = t.start_time, t.end_time, t.text
-
             # Trim leading silences
             if phones == []:
                 if p in sil_phones:

@@ -19,7 +19,6 @@ def prepare_align(config):
     with open(os.path.join(in_dir, "ProsodyLabeling/000001-010000.txt"), encoding="utf-8") as f:
         line_count = 0
         for line in tqdm(f):
-            print(line)
             line_count += 1
             if(line_count%2==1):
                 parts = line.strip().split()
@@ -30,13 +29,9 @@ def prepare_align(config):
                     p[0]
                     for p in pinyin(text, style=Style.TONE3, strict=False, neutral_tone_with_five=True)
                 ]
-                print(pinyins)
-                print(text)
                 pyline = ' '.join(pinyins)
             if(line_count%2==0):
                 continue
-            print(base_name)
-            print(pyline)
             wav_path = os.path.join(in_dir, "Wave", "{}.wav".format(base_name))
             if os.path.exists(wav_path):
                 os.makedirs(os.path.join(out_dir, speaker), exist_ok=True)

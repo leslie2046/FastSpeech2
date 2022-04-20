@@ -2,7 +2,7 @@ import argparse
 
 import yaml
 
-from preprocessor import ljspeech, aishell3, libritts,databaker
+from preprocessor import ljspeech, aishell3, libritts,databaker,b030,njueai2021
 
 
 def main(config):
@@ -14,6 +14,10 @@ def main(config):
         libritts.prepare_align(config)
     if "DataBaker" in config["dataset"]:
         databaker.prepare_align(config)
+    if "B030" in config["dataset"]:
+        b030.prepare_align(config)
+    if "njueai2021" in config["dataset"]:
+        njueai2021.prepare_align(config)
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ from utils.model import get_model, get_vocoder
 from utils.tools import to_device, synth_samples
 from dataset import TextDataset
 from text import text_to_sequence
+import jieba
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -58,12 +59,16 @@ def preprocess_english(text, preprocess_config):
 
 def preprocess_mandarin(text, preprocess_config):
     lexicon = read_lexicon(preprocess_config["path"]["lexicon_path"])
-
+    #words = list(jieba.lcut(text,cut_all=False,HMM=True))
+    #print(text)
+    #print(words)
     phones = []
     pinyins = [
         p[0]
         for p in pinyin(
-            text, style=Style.TONE3, strict=False, neutral_tone_with_five=True
+            #words,
+            text, 
+            style=Style.TONE3, strict=False, neutral_tone_with_five=True
         )
     ]
     for p in pinyins:
