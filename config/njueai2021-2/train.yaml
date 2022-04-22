@@ -1,7 +1,7 @@
 path:
-  ckpt_path: "./output/ckpt/njueai2021"
-  log_path: "./output/log/njueai2021"
-  result_path: "./output/result/njueai2021"
+  ckpt_path: "./output/ckpt/njueai2021-2"
+  log_path: "./output/log/njueai2021-2"
+  result_path: "./output/result/njueai2021-2"
 optimizer:
   batch_size: 16
   betas: [0.9, 0.98]

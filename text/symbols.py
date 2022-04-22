@@ -26,8 +26,8 @@ symbols = (
     + list(_punctuation)
     + list(_letters)
     + _arpabet
-    #+ _pinyiner
-    #+ _pinyin
-    + _db_pinyiner
+    + _pinyiner
+   # + _pinyin
+   # + _db_pinyiner
     + _silences
 )

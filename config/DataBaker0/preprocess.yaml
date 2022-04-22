@@ -1,0 +1,30 @@
+dataset: "DataBaker"
+
+path:
+  corpus_path: "/home/njue/software/code/FastSpeech2/datasets/DataBaker"
+  lexicon_path: "lexicon/mandarin_pinyin.dict"
+  raw_path: "./raw_data/DataBaker0"
+  preprocessed_path: "./preprocessed_data/DataBaker0"
+
+preprocessing:
+  val_size: 512
+  text:
+    text_cleaners: ["remove_prosodylabelings"]
+    language: "zh"
+  audio:
+    sampling_rate: 22050
+    max_wav_value: 32768.0
+  stft:
+    filter_length: 1024 
+    hop_length: 256
+    win_length: 1024
+  mel:
+    n_mel_channels: 80
+    mel_fmin: 0
+    mel_fmax: 8000 # please set to 8000 for HiFi-GAN vocoder, set to null for MelGAN vocoder
+  pitch:
+    feature: "phoneme_level" # support 'phoneme_level' or 'frame_level'
+    normalization: True
+  energy:
+    feature: "phoneme_level" # support 'phoneme_level' or 'frame_level'
+    normalization: True
