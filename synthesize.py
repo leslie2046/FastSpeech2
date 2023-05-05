@@ -59,9 +59,9 @@ def preprocess_english(text, preprocess_config):
 
 def preprocess_mandarin(text, preprocess_config):
     lexicon = read_lexicon(preprocess_config["path"]["lexicon_path"])
-    #words = list(jieba.lcut(text,cut_all=False,HMM=True))
-    #print(text)
-    #print(words)
+    words = list(jieba.lcut(text,cut_all=False,HMM=True))
+    print(text)
+    print(words)
     phones = []
     pinyins = [
         p[0]
